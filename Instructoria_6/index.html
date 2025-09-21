@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Instructoria 6</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
+      crossorigin="anonymous"
+    />
+
+    <style>
+      #agregar {
+        background-color: aquamarine;
+        padding: 10px;
+        border-radius: 10px;
+      }
+
+      #quitar {
+        background-color: rgb(214, 101, 45);
+        padding: 10px;
+        border-radius: 10px;
+      }
+
+      .contenedor {
+        margin: 20px;
+        padding: 8px;
+        background-color: blanchedalmond;
+      }
+
+      .claseRandom {
+        margin: 15px;
+        padding: 45px;
+        background-color: darkorange;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ID = Normalmente usado para JS -->
+    <!-- CLASS = Normalmente usado para CSS -->
+
+    <!-- DOM: Manipulacion de HTML con objetos de JS
+
+    -> document = Objeto del DOM
+    -> getElementById('id')
+    -> getElementByClassName('class')
+    -> querySelector('#id || .class')
+
+    -> addEventListener('evento', 'funcion')
+    -> onClick('funcion')
+    -->
+
+    <!-- ---------------- MANIPULACION DE CSS CON EL DOM ---------------- -->
+    <!-- BOOTSTRAP: Es un framework CSS basado en dar estilos mediante CLASES -->
+
+    <p id="parrafo" class="parrafito">Esto es un parrafo</p>
+
+    <hr />
+
+    <div id="contenedor" class="contenedor">CONTENEDOR DE SECCION 2</div>
+    <button type="button" id="agregar">Agregar</button>
+    <button type="button" id="quitar">Quitar</button>
+
+    <script>
+      // Parrafo 1 = Estilos con "style" y aprendar a manejar eventos ----------------------------
+      const parrafo = document.getElementById("parrafo");
+
+      parrafo.style.color = "green"; // CSS => color: green;
+
+      parrafo.onmouseover = () => (parrafo.style.color = "red"); // Accionado cuando el mouse pasa encima
+      parrafo.onmouseout = () => (parrafo.style.color = "green"); // Accionado cuando el mouse se quita
+
+      // Accionado al hacer CLICK sobre el elemento
+      parrafo.onclick = () => (parrafo.style.fontSize = "2rem"); // CSS => font-size: 2rem;
+
+      // Seccion 2 = Manejo de clases con el DOM
+        /*
+        -> "className" => Remmplaza todas las clases en el HTML
+        -> "classList.add" => Adiciona clases sin eliminar existentes
+        */
+
+      const contenedor = document.getElementById("contenedor");
+      const btnAgregar = document.getElementById("agregar");
+      const btnQuitar = document.getElementById("quitar");
+
+      btnAgregar.addEventListener("click", () => {
+        // contenedor.className = "bg-danger";
+        contenedor.classList.add('claseRandom', 'rounded', 'fs-1');
+      });
+
+      btnQuitar.addEventListener('click', () => {
+        // contenedor.className = "bg-info";
+        contenedor.classList.remove('claseRandom', 'rounded', 'fs-1');
+      });
+    </script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
