@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FORM con LocalStorage</title>
+</head>
+<body>
+    <h1>Lista de tareas</h1>
+    <input type="text" id="tarea" placeholder="Escribe una tarea...">
+    <button type="button" onclick="agregarTarea()">Agregar</button>
+    <button type="button" onclick="eliminarDatos()">Eliminar datos</button>
+    <ul id="lista"></ul>
+
+
+    <script>
+        let tareas = JSON.parse(localStorage.getItem("tareas")) || []; // getItem() -> Metodo para obtener valores de LocalStorage
+
+        // Funcion para mostrar resultados
+        function mostrarTareas() {
+            const lista = document.getElementById('lista');
+
+            lista.innerHTML = '';
+
+            for(let i = 0; i < tareas.length; i++) {
+                lista.innerHTML += '<li>' + tareas[i] + '</li>'
+            }
+        }
+
+        mostrarTareas();
+
+        // Funcion para agregar tareas
+        function agregarTarea() {
+            const tareaInput = document.getElementById('tarea').value; // Obtener Input
+            tareas.push(tareaInput);                                   // Obtener valor del input
+
+            localStorage.setItem("tareas", JSON.stringify(tareas)); // setItem() -> Agrega valores al localStorage en JSON
+
+            mostrarTareas();                                // Mostrar valor tras capturarlo
+        }
+
+        function eliminarDatos() {
+            localStorage.removeItem("tareas"); // Eliminar un dato especifico del localStorage
+            localStorage.clear();              // Vaciar todo el LocalStorage
+        }   
+    </script>
+</body>
+</html>
